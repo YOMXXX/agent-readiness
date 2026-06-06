@@ -6,7 +6,7 @@ export const fallback: Detector = {
   weight: 8,
   detect(ctx) {
     const strong = ctx.grep(
-      /\bfallback\b|circuit.?breaker|degrade|backup.?model|secondary.?model|on_error|\brescue\b/i,
+      /fallback|circuit.?breaker|degrade|backup.?model|secondary.?model|on_error|\brescue\b/i,
     );
     const errHandling = ctx.grep(/try\s*\{|except\b|\.catch\(/);
 

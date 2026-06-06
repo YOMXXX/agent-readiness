@@ -42,4 +42,14 @@ describe("buildContext", () => {
     const ctx = buildContext(dir);
     expect(ctx.grep(/SHOULD_NOT_APPEAR/)).toBe(false);
   });
+
+  it("ignores keywords inside comments", () => {
+    writeFileSync(
+      join(dir, "src", "commented.ts"),
+      "// this comment mentions fallback and trimMessages\nconst x = 1;",
+    );
+    const ctx = buildContext(dir);
+    expect(ctx.grep(/fallback/)).toBe(false);
+    expect(ctx.grep(/trimMessages/)).toBe(false);
+  });
 });

@@ -58,11 +58,8 @@ export async function run(input: string, history: string[]) {
         langfuse.trace({ name: "agent.run", input, output: object.reply });
         return object.reply;
       } catch {
-        // fallback to a cheaper model on failure
-        const { text } = await generateText({
-          model: openai("gpt-4o-mini"),
-          prompt: input,
-        });
+        const fallbackModel = openai("gpt-4o-mini");
+        const { text } = await generateText({ model: fallbackModel, prompt: input });
         return text;
       }
     },

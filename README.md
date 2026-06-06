@@ -56,8 +56,38 @@ Framework: Vercel AI SDK
 ```bash
 npx agent-readiness                 # scan current directory
 npx agent-readiness ./my-agent      # scan a specific path
-npx agent-readiness --json          # machine-readable output (for CI)
+npx agent-readiness --json          # machine-readable output
+npx agent-readiness --badge         # print a README badge (markdown)
+npx agent-readiness --min 70        # exit 1 if score < 70 (CI gate)
 npx agent-readiness --no-survey     # skip the interactive questions
+```
+
+## Use in CI
+
+Fail a pull request when readiness drops below a threshold:
+
+```yaml
+# .github/workflows/agent-readiness.yml
+name: Agent Readiness
+on: [pull_request]
+jobs:
+  readiness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npx agent-readiness --min 70
+```
+
+## Add a badge
+
+Show your score in your own README:
+
+```bash
+npx agent-readiness --badge
+# -> ![Agent Readiness](https://img.shields.io/badge/agent--readiness-66%2F100-yellow)
 ```
 
 ## How scoring works
