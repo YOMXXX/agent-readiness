@@ -1,0 +1,17 @@
+{
+  "name": "production-agent",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "ai": "^4.0.0",
+    "@ai-sdk/openai": "^1.0.0",
+    "zod": "^3.23.0",
+    "p-retry": "^6.2.0",
+    "langfuse": "^3.0.0",
+    "tiktoken": "^1.0.0"
+  },
+  "devDependencies": {
+    "promptfoo": "^0.100.0"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "name": "agent-readiness",
+  "version": "0.1.0",
+  "description": "Score your AI agent's production-readiness in 60 seconds. 88% of agents that demo well fail in prod — find out if yours will.",
+  "type": "module",
+  "bin": {
+    "agent-readiness": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "tsx src/cli.ts",
+    "build": "tsc",
+    "start": "node dist/cli.js",
+    "check": "tsc --noEmit",
+    "test": "vitest run",
+    "selftest": "tsx src/cli.ts --path fixtures/demo-agent --no-survey",
+    "prepublishOnly": "npm run check && npm test && npm run build"
+  },
+  "keywords": [
+    "ai",
+    "agent",
+    "llm",
+    "eval",
+    "production",
+    "reliability",
+    "guardrails",
+    "observability"
+  ],
+  "license": "MIT",
+  "author": "YOMXXX <316195542@qq.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YOMXXX/agent-readiness.git"
+  },
+  "homepage": "https://github.com/YOMXXX/agent-readiness#readme",
+  "bugs": "https://github.com/YOMXXX/agent-readiness/issues",
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "vitest": "^4.1.8"
+  }
+}
